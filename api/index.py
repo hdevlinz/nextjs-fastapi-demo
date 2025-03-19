@@ -318,7 +318,6 @@ app.add_middleware(
         "http://localhost:3003",
         "https://mossdev.aduhay.dev",
         "https://affiliate.tiktok.com",
-        #   "*"
     ],
     allow_origin_regex="chrome-extension://.*",
     allow_credentials=True,
@@ -344,7 +343,7 @@ async def create_creators(
     creators: Annotated[List[Dict[str, Any]], Body(...)],
 ) -> Response:
     [
-        logger.info(f"Received creator {creator.id}: {creator.nickname}")
+        logger.info(f"Received creator {creator.get('id', '')}: {creator.get('nickname', '')}")
         for creator in creators
     ]
 
@@ -357,7 +356,7 @@ async def create_creator_errors(
 ) -> Response:
     [
         logger.error(
-            f"Error crawling creator {error.code} - {error.message}: {error.data}"
+            f"Error crawling creator {error.get('code', '')} - {error.get('message', '')}: {error.get('data', '')}"
         )
         for error in errors
     ]
