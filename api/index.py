@@ -317,7 +317,6 @@ app.add_middleware(
         "http://localhost:5173",
         "http://localhost:3003",
         "https://mossdev.aduhay.dev",
-        "https://affiliate.tiktok.com",
     ],
     allow_origin_regex="chrome-extension://.*",
     allow_credentials=True,
